@@ -104,6 +104,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/chat/:path*"],
+  matcher: ["/((?!api/auth|webhooks/github|_next/static|_next/image|favicon.ico|logo.svg).*)"],
 };
+
 

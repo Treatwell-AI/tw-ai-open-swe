@@ -24,7 +24,7 @@ function checkBasicAuth(request: NextRequest): NextResponse | null {
     return new NextResponse("Authentication required", {
       status: 401,
       headers: {
-        "WWW-Authenticate": "Basic realm=\"Secure Area\"",
+        "WWW-Authenticate": 'Basic realm="Secure Area"',
       },
     });
   }
@@ -34,7 +34,7 @@ function checkBasicAuth(request: NextRequest): NextResponse | null {
     return new NextResponse("Authentication required", {
       status: 401,
       headers: {
-        "WWW-Authenticate": "Basic realm=\"Secure Area\"",
+        "WWW-Authenticate": 'Basic realm="Secure Area"',
       },
     });
   }
@@ -42,14 +42,14 @@ function checkBasicAuth(request: NextRequest): NextResponse | null {
   // Extract and decode credentials
   const base64Credentials = authHeader.slice(6); // Remove "Basic " prefix
   let credentials: string;
-  
+
   try {
     credentials = Buffer.from(base64Credentials, "base64").toString("utf-8");
   } catch (error) {
     return new NextResponse("Invalid credentials format", {
       status: 401,
       headers: {
-        "WWW-Authenticate": "Basic realm=\"Secure Area\"",
+        "WWW-Authenticate": 'Basic realm="Secure Area"',
       },
     });
   }
@@ -61,7 +61,7 @@ function checkBasicAuth(request: NextRequest): NextResponse | null {
     return new NextResponse("Invalid credentials", {
       status: 401,
       headers: {
-        "WWW-Authenticate": "Basic realm=\"Secure Area\"",
+        "WWW-Authenticate": 'Basic realm="Secure Area"',
       },
     });
   }
@@ -104,7 +104,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api/auth|webhooks/github|_next/static|_next/image|favicon.ico|logo.svg).*)"],
+  matcher: [
+    "/((?!api/auth|webhooks/github|_next/static|_next/image|favicon.ico|logo.svg).*)",
+  ],
 };
-
-

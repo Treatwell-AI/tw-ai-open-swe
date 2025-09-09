@@ -45,7 +45,7 @@ function checkBasicAuth(request: NextRequest): NextResponse | null {
 
   try {
     credentials = Buffer.from(base64Credentials, "base64").toString("utf-8");
-  } catch (error) {
+  } catch (_error) {
     return new NextResponse("Invalid credentials format", {
       status: 401,
       headers: {
